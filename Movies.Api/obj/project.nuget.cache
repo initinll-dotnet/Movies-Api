@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "mwyowRTuRXRwEYW+gzQScT9qmHQmVN+FUP4uVx+2mcZnVFfJVdJ2noNiegEZXmrq17qcRZpRlEDCV7wYUOywnQ==",
+  "dgSpecHash": "XOptsNFKdCDXH4zmhotLfqVeUUypTV52vUZ6yFiJIK+7O//xN0w2BIIunQjPnLamyhFEXVOmNL5YfdeGtAQueg==",
   "success": true,
   "projectFilePath": "C:\\Projects\\OSS\\MoviesApi\\Movies.Api\\Movies.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\G547482\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.4\\microsoft.aspnetcore.openapi.7.0.4.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\G547482\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
