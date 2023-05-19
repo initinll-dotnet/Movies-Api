@@ -2,10 +2,8 @@
 
 using Movies.Api.EndpointsConfig;
 using Movies.Api.Mapping;
-using Movies.Application.Models;
 using Movies.Application.Repositories;
 using Movies.Contracts.Requests;
-using Movies.Contracts.Responses;
 
 namespace Movies.Api.Controllers;
 
@@ -28,13 +26,15 @@ public class MoviesController : ControllerBase
 
         var movieResponse = movie.MapToMovieResponse();
 
-        return CreatedAtAction(nameof(Get), new { id = movieResponse.Id }, movieResponse);
+        return CreatedAtAction(nameof(Get), new { idOrSlug = movieResponse.Id }, movieResponse);
     }
 
     [HttpGet(ApiEndpoints.Movies.Get)]
-    public async Task<IActionResult> Get([FromRoute] Guid id)
+    public async Task<IActionResult> Get([FromRoute] string idOrSlug)
     {
-        var movie = await _movieRepository.GetByIdAsync(id);
+        var movie = Guid.TryParse(idOrSlug, out var id)
+            ? await _movieRepository.GetByIdAsync(id)
+            : await _movieRepository.GetBySlugAsync(idOrSlug);
 
         if (movie == null)
         {
