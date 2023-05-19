@@ -2,6 +2,7 @@
 
 using Movies.Application.Database;
 using Movies.Application.Repositories;
+using Movies.Application.Services;
 
 namespace Movies.Application.AppRegistry;
 
@@ -11,6 +12,7 @@ public static class ApplicationServiceCollectionExtentions
     {
         //services.AddSingleton<IMovieRepository, InMemoryMovieRepository>();
         services.AddSingleton<IMovieRepository, MovieRepository>();
+        services.AddSingleton<IMovieService, MovieService>();
 
         return services;
     }
