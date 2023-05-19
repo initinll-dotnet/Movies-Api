@@ -1,3 +1,4 @@
+using Movies.Api.Mapping;
 using Movies.Application.AppRegistry;
 using Movies.Application.Database;
 
@@ -11,8 +12,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Register custom application services
 builder.Services.AddApplication();
+// Register database with connection string
 builder.Services.AddDatabase(config["Database:ConnectionString"]!);
+// Register custom fluent validation middleware
+builder.Services.AddSingleton<ValidationMappingMiddleware>();
 
 var app = builder.Build();
 
@@ -25,8 +30,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
+// using custom fluent validation middleware
+app.UseMiddleware<ValidationMappingMiddleware>();
 app.MapControllers();
 
+// Initialising movies and genres db schema in postgressql
 var dbInitializer = app.Services.GetRequiredService<DbInitializer>();
 await dbInitializer.InitializeAsync();
 

@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "9SEL8jbsn5yB8dgezpCpDJ3DtVWzZ25MHFwp5VWAvaYc/zuqGpuS20fmX4+QBniJUPC8faVUwVfOarkQecOzhg==",
+  "dgSpecHash": "31wm5nXAE3XsX++imUVpqtV6svVXSVmMNYfsO6nqI97lkYTkP6emvO/kyLU+y+fF3yUpBQztdCU9nFW7gvwOTg==",
   "success": true,
   "projectFilePath": "C:\\Projects\\OSS\\MoviesApi\\Movies.Application\\Movies.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\G547482\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\G547482\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
+    "C:\\Users\\G547482\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.2\\fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512"
