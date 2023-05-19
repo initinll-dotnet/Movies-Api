@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using Movies.Api.EndpointsConfig;
 using Movies.Api.Mapping;
@@ -17,6 +18,8 @@ public class MoviesController : ControllerBase
         _movieService = movieService;
     }
 
+    // Trusted Member or Admin can create a movie
+    [Authorize(AuthConstants.TrustedMemberPolicyName)]
     [HttpPost(ApiEndpoints.Movies.Create)]
     public async Task<IActionResult> Create([FromBody] CreateMovieRequest request, CancellationToken cancellationToken)
     {
@@ -29,6 +32,8 @@ public class MoviesController : ControllerBase
         return CreatedAtAction(nameof(Get), new { idOrSlug = movieResponse.Id }, movieResponse);
     }
 
+    // Anyone can access a movie details
+    [AllowAnonymous]
     [HttpGet(ApiEndpoints.Movies.Get)]
     public async Task<IActionResult> Get([FromRoute] string idOrSlug, CancellationToken cancellationToken)
     {
@@ -45,6 +50,8 @@ public class MoviesController : ControllerBase
         return Ok(response);
     }
 
+    // Anyone can access list of movie details
+    [AllowAnonymous]
     [HttpGet(ApiEndpoints.Movies.GetAll)]
     public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
@@ -54,6 +61,8 @@ public class MoviesController : ControllerBase
         return Ok(response);
     }
 
+    // Trusted Member or Admin can update a movie
+    [Authorize(AuthConstants.TrustedMemberPolicyName)]
     [HttpPut(ApiEndpoints.Movies.Update)]
     public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateMovieRequest request, CancellationToken cancellationToken)
     {
@@ -69,6 +78,8 @@ public class MoviesController : ControllerBase
         return Ok(response);
     }
 
+    // Only Admin can delete a movie
+    [Authorize(AuthConstants.AdminUserPolicyName)]
     [HttpDelete(ApiEndpoints.Movies.Delete)]
     public async Task<IActionResult> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
     {

@@ -1,9 +1,52 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
+using Movies.Api;
 using Movies.Api.Mapping;
 using Movies.Application.AppRegistry;
 using Movies.Application.Database;
 
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
+
+// adding JWT Authentication
+builder.Services.AddAuthentication(x => 
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(jwtBearerOptions => 
+{
+    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]!)),
+        ValidateIssuerSigningKey = true,
+        ValidateLifetime = true,
+        ValidIssuer = config["Jwt:Issuer"],
+        ValidAudience = config["Jwt:Audience"],
+        ValidateIssuer = true,
+        ValidateAudience = true
+    };
+});
+
+// adding Authorization
+builder.Services.AddAuthorization(authorizationOptions => 
+{
+    authorizationOptions.AddPolicy(AuthConstants.AdminUserPolicyName, authorizationPolicyBuilder =>
+    {
+        authorizationPolicyBuilder.RequireClaim(AuthConstants.AdminUserClaimName, "true");
+    });
+
+    authorizationOptions.AddPolicy(AuthConstants.TrustedMemberPolicyName, authorizationPolicyBuilder =>
+    {
+        authorizationPolicyBuilder.RequireAssertion(context =>
+            context.User.HasClaim(claim => claim is { Type: AuthConstants.AdminUserClaimName, Value: "true" }) ||
+            context.User.HasClaim(claim => claim is { Type: AuthConstants.TrustedMemberClaimName, Value: "true" }));
+    });
+});
+
 
 // Add services to the container.
 
@@ -28,6 +71,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// using JWT Authentication
+app.UseAuthentication();
+// using Authorization
 app.UseAuthorization();
 
 // using custom fluent validation middleware
