@@ -12,13 +12,13 @@ public class InMemoryMovieRepository : IMovieRepository
         return Task.FromResult(true);
     }
 
-    public Task<Movie?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public Task<Movie?> GetByIdAsync(Guid id, Guid? userId = default, CancellationToken cancellationToken = default)
     {
         var movie = _movies.SingleOrDefault(x => x.Id == id);
         return Task.FromResult(movie);
     }
 
-    public Task<Movie?> GetBySlugAsync(string slug, CancellationToken cancellationToken = default)
+    public Task<Movie?> GetBySlugAsync(string slug, Guid? userId = default, CancellationToken cancellationToken = default)
     {
         var movie = _movies.SingleOrDefault(x => x.Slug == slug);
         return Task.FromResult(movie);
@@ -44,7 +44,7 @@ public class InMemoryMovieRepository : IMovieRepository
         return Task.FromResult(movieRemoved);
     }
 
-    public Task<IEnumerable<Movie>> GetAllAsync(CancellationToken cancellationToken = default)
+    public Task<IEnumerable<Movie>> GetAllAsync(Guid? userId = default, CancellationToken cancellationToken = default)
     {
         return Task.FromResult(_movies.AsEnumerable());
     }
