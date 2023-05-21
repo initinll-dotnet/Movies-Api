@@ -31,12 +31,9 @@ public static class ContractMapping
         };
     }
 
-    public static MoviesResponse MapToMovieResponse(this IEnumerable<Movie> movies)
+    public static IEnumerable<MovieResponse> MapToMovieResponse(this IEnumerable<Movie> movies)
     {
-        return new MoviesResponse
-        {
-            Items = movies.Select(MapToMovieResponse)
-        };
+        return movies.Select(MapToMovieResponse);
     }
 
     public static Movie MapToMovie(this UpdateMovieRequest request, Guid id)

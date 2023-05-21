@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 using Movies.Api.Auth;
 using Movies.Api.EndpointsConfig;
@@ -35,6 +36,7 @@ public class MoviesController : ControllerBase
 
     // Anyone can access a movie details
     [AllowAnonymous]
+    [EnableQuery]
     [HttpGet(ApiEndpoints.Movies.Get)]
     public async Task<IActionResult> Get([FromRoute] string idOrSlug, CancellationToken cancellationToken)
     {
@@ -55,6 +57,7 @@ public class MoviesController : ControllerBase
 
     // Anyone can access list of movie details
     [AllowAnonymous]
+    [EnableQuery]
     [HttpGet(ApiEndpoints.Movies.GetAll)]
     public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {

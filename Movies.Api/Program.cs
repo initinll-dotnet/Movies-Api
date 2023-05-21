@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.OData;
 using Microsoft.IdentityModel.Tokens;
 
 using Movies.Api.Auth;
@@ -50,7 +51,14 @@ builder.Services.AddAuthorization(authorizationOptions =>
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+// Enabling OData
+builder.Services
+    .AddControllers()
+    .AddOData(option => option
+        .Select()
+        .Filter()
+        .OrderBy());
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

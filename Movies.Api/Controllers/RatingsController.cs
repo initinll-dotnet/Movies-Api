@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 using Movies.Api.Auth;
 using Movies.Api.EndpointsConfig;
@@ -21,7 +22,7 @@ public class RatingsController : ControllerBase
 
     [Authorize]
     [HttpPut(ApiEndpoints.Movies.Rate)]
-    public async Task<IActionResult> RateMovies([FromRoute] Guid id, 
+    public async Task<IActionResult> RateMovies([FromRoute] Guid id,
         [FromBody] RateMovieRequest request, CancellationToken cancellationToken)
     {
         var userId = HttpContext.GetUserId();
@@ -39,6 +40,7 @@ public class RatingsController : ControllerBase
     }
 
     [Authorize]
+    [EnableQuery]
     [HttpGet(ApiEndpoints.Ratings.GetUserRatings)]
     public async Task<IActionResult> GetUserRatings(CancellationToken cancellationToken)
     {
