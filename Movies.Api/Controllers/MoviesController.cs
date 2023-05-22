@@ -11,6 +11,7 @@ using Movies.Contracts.Requests;
 namespace Movies.Api.Controllers;
 
 [ApiController]
+[ApiVersion("1.0")]
 public class MoviesController : ControllerBase
 {
     private readonly IMovieService _movieService;

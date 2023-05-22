@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.OData;
 using Microsoft.IdentityModel.Tokens;
 
@@ -69,6 +71,17 @@ builder.Services.AddApplication();
 builder.Services.AddDatabase(config["Database:ConnectionString"]!);
 // Register custom fluent validation middleware
 builder.Services.AddSingleton<ValidationMappingMiddleware>();
+// api versioning
+builder.Services.AddApiVersioning(options =>
+{
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.ReportApiVersions = true;
+    options.ApiVersionReader = ApiVersionReader.Combine(
+        new QueryStringApiVersionReader("api-version"),
+        new HeaderApiVersionReader("X-Version"),
+        new MediaTypeApiVersionReader("ver"));
+});
 
 var app = builder.Build();
 

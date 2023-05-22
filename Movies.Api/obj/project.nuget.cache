@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "u9vOZX1NTVQRZbFZgY/xRVREvSsi0fQ2hRDQIEatFt35HKD4Xy29l778UCxI+TSU1u90+mEfDUnhEDls2HeuFw==",
+  "dgSpecHash": "EReFRiYQhKp4VkJqQYJKAcbE3sbq8jp4fPNRsey0T3agiQ+wCq3gcxBsXEi8eU5n29q6jkqkQK6N6vGzWvH6dQ==",
   "success": true,
   "projectFilePath": "C:\\Projects\\OSS\\MoviesApi\\Movies.Api\\Movies.Api.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\G547482\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.2\\fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.5\\microsoft.aspnetcore.authentication.jwtbearer.7.0.5.nupkg.sha512",
+    "C:\\Users\\G547482\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\microsoft.aspnetcore.odata\\8.2.0\\microsoft.aspnetcore.odata.8.2.0.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.4\\microsoft.aspnetcore.openapi.7.0.4.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
