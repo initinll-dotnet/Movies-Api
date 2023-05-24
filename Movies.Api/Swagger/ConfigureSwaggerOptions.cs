@@ -22,8 +22,11 @@ public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
         // add swagger document for every API version discovered
         foreach (var description in _provider.ApiVersionDescriptions)
         {
-            options.SwaggerDoc(description.GroupName,CreateVersionInfo(description, _environment));
+            options.SwaggerDoc(description.GroupName, CreateVersionInfo(description, _environment));
         }
+
+        options.AddSecurityDefinition("Bearer", AddBearerOpenApiSecurityScheme());
+        options.AddSecurityRequirement(AddBearerOpenApiSecurityRequirement());
     }
 
     private OpenApiInfo CreateVersionInfo(ApiVersionDescription description, IHostEnvironment environment)
@@ -41,4 +44,41 @@ public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
 
         return info;
     }
+
+    private OpenApiSecurityScheme AddBearerOpenApiSecurityScheme()
+    {
+        var securityScheme = new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Description = "Please provide a valid token",
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            BearerFormat = "JWT",
+            Scheme = "Bearer"
+        };
+
+        return securityScheme;
+    }
+
+    private OpenApiSecurityRequirement AddBearerOpenApiSecurityRequirement()
+    {
+        var securityRequirement = new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                Array.Empty<string>()
+            }
+        };
+
+        return securityRequirement;
+    }
 }
+
+
