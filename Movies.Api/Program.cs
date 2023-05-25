@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 
 using Movies.Api.Auth;
+using Movies.Api.Health;
 using Movies.Api.Mapping;
 using Movies.Api.Swagger;
 using Movies.Application.AppRegistry;
@@ -21,12 +21,12 @@ var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 
 // adding JWT Authentication
-builder.Services.AddAuthentication(x => 
+builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(jwtBearerOptions => 
+}).AddJwtBearer(jwtBearerOptions =>
 {
     jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
     {
@@ -41,7 +41,7 @@ builder.Services.AddAuthentication(x =>
 });
 
 // adding Authorization
-builder.Services.AddAuthorization(authorizationOptions => 
+builder.Services.AddAuthorization(authorizationOptions =>
 {
     authorizationOptions.AddPolicy(AuthConstants.AdminUserPolicyName, authorizationPolicyBuilder =>
     {
@@ -96,6 +96,10 @@ builder.Services.AddVersionedApiExplorer(setup =>
     setup.SubstituteApiVersionInUrl = true;
 });
 
+// Adding custome database health check
+builder.Services.AddHealthChecks()
+    .AddCheck<DatabaseHealthCheck>(DatabaseHealthCheck.Name);
+
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 builder.Services.AddSwaggerGen(x => x.OperationFilter<SwaggerDefaultValues>());
 
@@ -116,6 +120,9 @@ if (app.Environment.IsDevelopment())
         }
     });
 }
+
+// using health check
+app.MapHealthChecks("_health");
 
 // using JWT Authentication
 app.UseAuthentication();
