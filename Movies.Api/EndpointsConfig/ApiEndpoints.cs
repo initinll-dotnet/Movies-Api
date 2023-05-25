@@ -24,4 +24,15 @@ public static class ApiEndpoints
 
         public const string GetUserRatings = $"{Base}/me";
     }
+
+    public static class Ping
+    {
+        private const string Base = $"{ApiBase}/ping";
+
+        public const string Ping1 = $"{Base}/1";
+        public const string Ping2 = $"{Base}/2";
+        public const string Ping3 = $"{Base}/3";
+        public const string Ping4 = $"{Base}/4";
+        public const string Ping5 = $"{Base}/5";
+    }
 }

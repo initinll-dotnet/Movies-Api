@@ -43,6 +43,11 @@ builder.Services.AddAuthentication(x =>
 // adding Authorization
 builder.Services.AddAuthorization(authorizationOptions =>
 {
+    authorizationOptions.AddPolicy(AuthConstants.JwtOrApiKeyPolicyName, authorizationPolicyBuilder =>
+    {
+        authorizationPolicyBuilder.AddRequirements(new AdminAuthRequirement(config["ApiKey"]!));
+    });
+
     authorizationOptions.AddPolicy(AuthConstants.AdminUserPolicyName, authorizationPolicyBuilder =>
     {
         authorizationPolicyBuilder.RequireClaim(AuthConstants.AdminUserClaimName, "true");
@@ -100,6 +105,7 @@ builder.Services.AddVersionedApiExplorer(setup =>
 builder.Services.AddHealthChecks()
     .AddCheck<DatabaseHealthCheck>(DatabaseHealthCheck.Name);
 
+builder.Services.AddScoped<ApiKeyAuthFilter>();
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 builder.Services.AddSwaggerGen(x => x.OperationFilter<SwaggerDefaultValues>());
 
