@@ -7,6 +7,7 @@ using Movies.Api.Auth;
 using Movies.Api.EndpointsConfig;
 using Movies.Api.Mapping;
 using Movies.Application.Services;
+using Movies.Contracts.Responses;
 
 namespace Movies.Api.Controllers;
 
@@ -24,6 +25,7 @@ public class RatingsV2Controller : ControllerBase
     [Authorize]
     [EnableQuery]
     [HttpGet(ApiEndpoints.Ratings.GetUserRatings)]
+    [ProducesResponseType(typeof(IEnumerable<MovieRatingResponse>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetUserRatings(CancellationToken cancellationToken)
     {
         var userId = HttpContext.GetUserId();
