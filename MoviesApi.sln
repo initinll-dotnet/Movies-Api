@@ -14,7 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Api", "Identity.Api\Identity.Api.csproj", "{D2FCA593-94AD-4AF3-85AC-C32F0AB7C6E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Api", "Identity.Api\Identity.Api.csproj", "{D2FCA593-94AD-4AF3-85AC-C32F0AB7C6E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Api.Sdk", "Movies.Api.Sdk\Movies.Api.Sdk.csproj", "{0A43996C-FD6A-4E4C-8BC8-4EE02481723C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Api.Sdk.Consumer", "Movies.Api.Sdk.Consumer\Movies.Api.Sdk.Consumer.csproj", "{5F174ADD-0BC1-43A2-ACE2-FF4DE1FD2EB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +42,14 @@ Global
 		{D2FCA593-94AD-4AF3-85AC-C32F0AB7C6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2FCA593-94AD-4AF3-85AC-C32F0AB7C6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2FCA593-94AD-4AF3-85AC-C32F0AB7C6E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A43996C-FD6A-4E4C-8BC8-4EE02481723C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A43996C-FD6A-4E4C-8BC8-4EE02481723C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A43996C-FD6A-4E4C-8BC8-4EE02481723C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A43996C-FD6A-4E4C-8BC8-4EE02481723C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F174ADD-0BC1-43A2-ACE2-FF4DE1FD2EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F174ADD-0BC1-43A2-ACE2-FF4DE1FD2EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F174ADD-0BC1-43A2-ACE2-FF4DE1FD2EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F174ADD-0BC1-43A2-ACE2-FF4DE1FD2EB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
