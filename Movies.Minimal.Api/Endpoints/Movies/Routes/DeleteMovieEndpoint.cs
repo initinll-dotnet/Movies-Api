@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using Movies.Application.Services;
+using Movies.Contracts.Responses;
 using Movies.Minimal.Api.Auth;
 using Movies.Minimal.Api.EndpointsConfig;
 
@@ -15,7 +16,12 @@ public static class DeleteMovieEndpoint
         builder
             .MapDelete(ApiEndpoints.Movies.Delete, DeleteMovie)
             .WithName(Name)
-            .RequireAuthorization(policyNames: AuthConstants.AdminUserPolicyName);
+            .Produces(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status404NotFound)
+            .RequireAuthorization(policyNames: AuthConstants.AdminUserPolicyName)
+            .WithApiVersionSet(ApiVersioning.VersionSet)
+            .HasApiVersion(1.0)
+            .WithOpenApi();
 
         return builder;
     }

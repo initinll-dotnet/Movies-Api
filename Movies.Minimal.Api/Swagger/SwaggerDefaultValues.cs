@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -13,7 +12,7 @@ public class SwaggerDefaultValues : IOperationFilter
     {
         var apiDescription = context.ApiDescription;
 
-        operation.Deprecated = apiDescription.IsDeprecated();
+        //operation.Deprecated = apiDescription.IsDeprecated();
 
         foreach (var responseType in context.ApiDescription.SupportedResponseTypes)
         {
@@ -41,7 +40,10 @@ public class SwaggerDefaultValues : IOperationFilter
 
             parameter.Description ??= description.ModelMetadata.Description;
 
-            if (parameter.Schema.Default == null && description.DefaultValue != null)
+            if (parameter.Schema.Default == null &&
+                description.DefaultValue != null &&
+                description.DefaultValue is not DBNull &&
+                description.ModelMetadata is { } modelMetdata)
             {
                 var json = JsonSerializer.Serialize(description.DefaultValue, description.ModelMetadata!.ModelType);
                 parameter.Schema.Default = OpenApiAnyFactory.CreateFromJson(json);

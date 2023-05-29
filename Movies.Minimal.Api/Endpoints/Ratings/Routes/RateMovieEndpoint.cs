@@ -16,7 +16,12 @@ public static class RateMovieEndpoint
         builder
             .MapPost(ApiEndpoints.Movies.Rate, RateMovie)
             .WithName(Name)
-            .RequireAuthorization();
+            .Produces(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status404NotFound)
+            .RequireAuthorization()
+            .WithApiVersionSet(ApiVersioning.VersionSet)
+            .HasApiVersion(1.0)
+            .WithOpenApi();
 
         return builder;
     }

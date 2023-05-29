@@ -1,6 +1,9 @@
+using Asp.Versioning;
+using Asp.Versioning.ApiExplorer;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 using Movies.Application.AppRegistry;
@@ -9,6 +12,9 @@ using Movies.Minimal.Api.Auth;
 using Movies.Minimal.Api.Endpoints;
 using Movies.Minimal.Api.Health;
 using Movies.Minimal.Api.Mapping;
+using Movies.Minimal.Api.Swagger;
+
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 using System.Text;
 
@@ -90,13 +96,19 @@ builder.Services.AddApiVersioning(options =>
         new MediaTypeApiVersionReader("ver"));
 });
 
+builder.Services.AddEndpointsApiExplorer();
+
 // Adding custome database health check
 builder.Services.AddHealthChecks()
     .AddCheck<DatabaseHealthCheck>(DatabaseHealthCheck.Name);
 
 builder.Services.AddScoped<ApiKeyAuthFilter>();
+//builder.Services.AddScoped<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+//builder.Services.AddSwaggerGen(x => x.OperationFilter<SwaggerDefaultValues>());
 
 var app = builder.Build();
+
+app.CreateApiVersionSet();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

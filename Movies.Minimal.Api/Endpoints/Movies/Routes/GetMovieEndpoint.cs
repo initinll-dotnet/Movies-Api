@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using Movies.Application.Services;
+using Movies.Contracts.Responses;
 using Movies.Minimal.Api.Auth;
 using Movies.Minimal.Api.EndpointsConfig;
 using Movies.Minimal.Api.Mapping;
@@ -16,7 +17,12 @@ public static class GetMovieEndpoint
         builder
             .MapGet(ApiEndpoints.Movies.Get, GetMovie)
             .WithName(Name)
-            .AllowAnonymous();
+            .Produces<MovieResponse>(StatusCodes.Status201Created)
+            .Produces(StatusCodes.Status404NotFound)
+            .AllowAnonymous()
+            .WithApiVersionSet(ApiVersioning.VersionSet)
+            .HasApiVersion(1.0)
+            .WithOpenApi();
 
         return builder;
     }

@@ -2,6 +2,7 @@
 
 using Movies.Application.Services;
 using Movies.Contracts.Requests;
+using Movies.Contracts.Responses;
 using Movies.Minimal.Api.Auth;
 using Movies.Minimal.Api.EndpointsConfig;
 using Movies.Minimal.Api.Mapping;
@@ -17,7 +18,13 @@ public static class UpdateMovieEndpoint
         builder
             .MapPatch(ApiEndpoints.Movies.Update, UpdateMovie)
             .WithName(Name)
-            .RequireAuthorization(policyNames: AuthConstants.TrustedMemberPolicyName);
+            .Produces<MovieResponse>(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status404NotFound)
+            .Produces<ValidationFailureResponse>(StatusCodes.Status400BadRequest)
+            .RequireAuthorization(policyNames: AuthConstants.TrustedMemberPolicyName)
+            .WithApiVersionSet(ApiVersioning.VersionSet)
+            .HasApiVersion(1.0)
+            .WithOpenApi();
 
         return builder;
     }
