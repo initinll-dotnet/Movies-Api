@@ -1,4 +1,4 @@
-﻿namespace Movies.Api.Auth;
+﻿namespace Movies.Mvc.Api.Auth;
 
 public static class IdentityExtensions
 {

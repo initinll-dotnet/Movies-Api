@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-using Movies.Api.Auth;
-using Movies.Api.Health;
-using Movies.Api.Mapping;
-using Movies.Api.Swagger;
 using Movies.Application.AppRegistry;
 using Movies.Application.Database;
+using Movies.Mvc.Api.Auth;
+using Movies.Mvc.Api.Health;
+using Movies.Mvc.Api.Mapping;
+using Movies.Mvc.Api.Swagger;
 
 using Swashbuckle.AspNetCore.SwaggerGen;
 

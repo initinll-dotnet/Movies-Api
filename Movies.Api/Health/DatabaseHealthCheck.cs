@@ -2,7 +2,7 @@
 
 using Movies.Application.Database;
 
-namespace Movies.Api.Health;
+namespace Movies.Mvc.Api.Health;
 
 public class DatabaseHealthCheck : IHealthCheck
 {

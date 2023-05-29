@@ -2,11 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 
-using Movies.Api.Auth;
+using Movies.Mvc.Api.Auth;
+using Movies.Mvc.Api.EndpointsConfig;
 
-using Movies.Api.EndpointsConfig;
-
-namespace Movies.Api.Controllers;
+namespace Movies.Mvc.Api.Controllers;
 
 [ApiController]
 [ApiVersion("1.0")]

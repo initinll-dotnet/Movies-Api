@@ -1663,9 +1663,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\OSS\\MoviesApi\\Movies.Api\\Movies.Api.csproj",
-      "projectName": "Movies.Api",
-      "projectPath": "C:\\Projects\\OSS\\MoviesApi\\Movies.Api\\Movies.Api.csproj",
+      "projectUniqueName": "C:\\Projects\\OSS\\MoviesApi\\Movies.Api\\Movies.Mvc.Api.csproj",
+      "projectName": "Movies.Mvc.Api",
+      "projectPath": "C:\\Projects\\OSS\\MoviesApi\\Movies.Api\\Movies.Mvc.Api.csproj",
       "packagesPath": "C:\\Users\\G547482\\.nuget\\packages\\",
       "outputPath": "C:\\Projects\\OSS\\MoviesApi\\Movies.Api\\obj\\",
       "projectStyle": "PackageReference",

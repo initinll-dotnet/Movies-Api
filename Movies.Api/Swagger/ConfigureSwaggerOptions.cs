@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Models;
 
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Movies.Api.Swagger;
+namespace Movies.Mvc.Api.Swagger;
 
 public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
 {

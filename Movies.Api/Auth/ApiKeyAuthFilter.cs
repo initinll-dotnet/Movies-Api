@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Movies.Api.Auth;
+namespace Movies.Mvc.Api.Auth;
 
 public class ApiKeyAuthFilter : IAuthorizationFilter
 {
@@ -14,7 +14,7 @@ public class ApiKeyAuthFilter : IAuthorizationFilter
 
     public void OnAuthorization(AuthorizationFilterContext context)
     {
-        if (!context.HttpContext.Request.Headers.TryGetValue(AuthConstants.ApiKeyHeaderName, 
+        if (!context.HttpContext.Request.Headers.TryGetValue(AuthConstants.ApiKeyHeaderName,
             out var extractedApiKey))
         {
             context.Result = new UnauthorizedObjectResult("API Key missing");

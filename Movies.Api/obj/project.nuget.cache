@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "whY7WuSoNdRLsl5t6ctynQlhtGsEbu6whH4vfUqUwSvcHtsU1BfgxwD3xGMPH+C/8jFcfZYDzOiKdXjAXB5DCw==",
+  "dgSpecHash": "d+jYKFWU4o0vabrvUsE6xsBf1rRbjUCEK18h0lkFY4HEbHHne9RA3TAjTN25LR0pkRRutIwiG5qw6VBIMQsrXw==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\OSS\\MoviesApi\\Movies.Api\\Movies.Api.csproj",
+  "projectFilePath": "C:\\Projects\\OSS\\MoviesApi\\Movies.Api\\Movies.Mvc.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\G547482\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\G547482\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",

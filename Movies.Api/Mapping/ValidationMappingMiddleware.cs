@@ -2,7 +2,7 @@
 
 using Movies.Contracts.Responses;
 
-namespace Movies.Api.Mapping;
+namespace Movies.Mvc.Api.Mapping;
 
 public class ValidationMappingMiddleware : IMiddleware
 {

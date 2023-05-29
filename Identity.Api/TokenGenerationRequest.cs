@@ -1,4 +1,4 @@
-﻿namespace Identity.Api;
+﻿namespace Identity.Mvc.Api;
 
 public class TokenGenerationRequest
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Movies.Api.Auth;
+namespace Movies.Mvc.Api.Auth;
 
 public class AdminAuthRequirement : IAuthorizationHandler, IAuthorizationRequirement
 {
@@ -26,7 +26,7 @@ public class AdminAuthRequirement : IAuthorizationHandler, IAuthorizationRequire
             return Task.CompletedTask;
         }
 
-        if (!httpContext.Request.Headers.TryGetValue(AuthConstants.ApiKeyHeaderName, 
+        if (!httpContext.Request.Headers.TryGetValue(AuthConstants.ApiKeyHeaderName,
             out var extractedApiKey))
         {
             context.Fail();

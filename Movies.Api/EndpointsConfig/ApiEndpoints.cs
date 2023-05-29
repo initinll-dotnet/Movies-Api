@@ -1,4 +1,4 @@
-﻿namespace Movies.Api.EndpointsConfig;
+﻿namespace Movies.Mvc.Api.EndpointsConfig;
 
 public static class ApiEndpoints
 {
@@ -13,7 +13,7 @@ public static class ApiEndpoints
         public const string GetAll = Base;
         public const string Update = $"{Base}/{{id:guid}}";
         public const string Delete = $"{Base}/{{id:guid}}";
-        
+
         public const string Rate = $"{Base}/{{id:guid}}/ratings";
         public const string DeleteRatings = $"{Base}/{{id:guid}}/ratings";
     }

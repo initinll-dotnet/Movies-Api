@@ -5,7 +5,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 using System.Text.Json;
 
-namespace Movies.Api.Swagger;
+namespace Movies.Mvc.Api.Swagger;
 
 public class SwaggerDefaultValues : IOperationFilter
 {
